@@ -1,19 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  createAppContainer,
+  createSwitchNavigator,
+  createStackNavigator,
+  createBottomTabNavigator
+} from "react-navigation";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+import FavoriteScreen from "./src/screens/FavoriteScreen"
+import MostPopularScreen from "./src/screens/MostPopularScreen"
+// import PageOneScreen from "./src/screens/PageOneScreen"
+// import PageThreeScreen from "./src/screens/PageThreeScreen"
+// import PageTwoScreen from "./src/screens/PageTwoScreen"
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+import FrontPages from "./src/screens/FrontPages"
+import PlayerScreen from "./src/screens/PlayerScreen"
+import RecentScreen from "./src/screens/RecentScreen"
+
+const switchNavigator = createSwitchNavigator({
+  frontPage: FrontPages,
+  mainFlow: createBottomTabNavigator({
+    Popular: MostPopularScreen,
+    Favorites: FavoriteScreen,
+    Recent: RecentScreen,
+    Player: PlayerScreen
+  })
 });
+
+const App = createAppContainer(switchNavigator)
+
+export default () => {
+  return(
+    <App/>
+  )
+}
