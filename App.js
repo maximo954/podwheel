@@ -13,16 +13,18 @@ import MostPopularScreen from "./src/screens/MostPopularScreen"
 // import PageTwoScreen from "./src/screens/PageTwoScreen"
 
 import FrontPages from "./src/screens/FrontPages"
-import PlayerScreen from "./src/screens/PlayerScreen"
 import RecentScreen from "./src/screens/RecentScreen"
+import PlayerAndListScreen from "./src/screens/PlayerAndListScreen";
 
 const switchNavigator = createSwitchNavigator({
-  frontPage: FrontPages,
+  // frontPage: FrontPages,
   mainFlow: createBottomTabNavigator({
-    Popular: MostPopularScreen,
+    Home: createStackNavigator({
+      Popular: MostPopularScreen,
+      PlayerAndList: PlayerAndListScreen
+    }),
     Favorites: FavoriteScreen,
-    Recent: RecentScreen,
-    Player: PlayerScreen
+    Recent: RecentScreen
   })
 });
 

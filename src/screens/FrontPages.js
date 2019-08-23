@@ -8,7 +8,7 @@ import PageThreeScreen from "./PageThreeScreen";
 const FrontPages = ({ navigation }) => {
   return (
     <Swiper loop={false}>
-      <PageOneScreen />
+      <PageOneScreen navigation={navigation}/>
       <PageTwoScreen />
       <PageThreeScreen navigation={navigation}/>
     </Swiper>
